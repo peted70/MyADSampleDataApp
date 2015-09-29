@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="MyADSampleDataApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyADSampleDataApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ad="using:Microsoft.Azure.ActiveDirectory.GraphClient"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ProgressBar IsIndeterminate="{x:Bind ViewModel.IsBusy, Mode=OneWay}" 
+                     IsEnabled="{x:Bind ViewModel.IsBusy, Mode=OneWay}" Height="16" />
+        <GridView ItemsSource="{x:Bind ViewModel.Users, Mode=OneWay}"
+                  Grid.Row="1">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="ad:IUser">
+                    <Grid Margin="16" Padding="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{x:Bind DisplayName}"
+                                   Style="{ThemeResource SubheaderTextBlockStyle}" TextWrapping="NoWrap"/>
+                        <TextBlock Text="{x:Bind GivenName}"
+                                   Style="{ThemeResource TitleTextBlockStyle}"  TextWrapping="NoWrap"
+                                   Grid.Row="1"/>
+                        <TextBlock Text="{x:Bind PostalCode}"
+                                   Grid.Row="2"
+                                   Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="NoWrap"/>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="AddFriend" Label="Add Random Users" Click="AppBarButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

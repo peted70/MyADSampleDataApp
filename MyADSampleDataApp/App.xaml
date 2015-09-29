@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="MyADSampleDataApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyADSampleDataApp"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <x:String x:Key="ida:ClientID">abdd95ef-0626-4aa6-942f-5e3bbfe0d079</x:String>
+        <x:String x:Key="ida:AADInstance">https://login.microsoftonline.com/</x:String>
+        <x:String x:Key="ida:Domain">fitnesscloud.onmicrosoft.com</x:String>
+    </Application.Resources>
+
+</Application>
